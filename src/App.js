@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GitHubForkRibbon from "react-github-fork-ribbon";
 import "./styles.css";
 
 import Dropzone from "./components/filedrop";
@@ -35,6 +36,13 @@ export default function App() {
 
   return (
     <div className="App">
+      <GitHubForkRibbon
+        href="//github.com/pricci1/horario-uandes"
+        target="_blank"
+        position="right"
+      >
+        Fork me on GitHub
+      </GitHubForkRibbon>
       <h1>Horario Ingeniería</h1>
       {xlsxData.length > 2 && <h3>{xlsxData[1]["n"]}</h3>}
       <Dropzone text="Arrastrea un XLSX..." dataSetter={setXlsxData} />
