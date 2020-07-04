@@ -164,7 +164,11 @@ const horarioBuilder = (courses) => {
 
   courses.forEach((event) => {
     console.log("aca1");
-    if (event["tipo"] === "OLIN" || event["tipo"] === "AYON") {
+    if (
+      event["tipo"] === "OLIN" ||
+      event["tipo"] === "AYON" ||
+      event["tipo"] === "LBON"
+    ) {
       for (const day in days) {
         const dayName = days[day];
         if (event.hasOwnProperty(dayName)) {
@@ -197,7 +201,7 @@ function getHourBlocksIds(hourStr) {
 }
 
 function getEventsTitles(events) {
-  const bgColor = { OLIN: "green", AYON: "yellow" };
+  const bgColor = { OLIN: "green", AYON: "yellow", LBON: "cyan" };
   if (typeof events === "object") {
     const courseBlock = events.map((event) => {
       return (
