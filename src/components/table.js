@@ -191,11 +191,11 @@ const horarioBuilder = (courses) => {
 
 function getHourBlocksIds(hourStr) {
   const [start, end] = hourStr.split("-");
-  const startInt = parseInt(start.split(":")[0]);
-  const endInt = parseInt(end.split(":")[0]);
+  const startInt = parseInt(start.split(":")[0]) - 8;
+  const endInt = parseInt(end.split(":")[0]) - 9;
   const spawnIds = [];
   for (let id = startInt; id <= endInt; id++) {
-    spawnIds.push(id - 8);
+    spawnIds.push(id);
   }
   return spawnIds;
 }
