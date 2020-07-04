@@ -2,6 +2,7 @@
 
 > No me hago responsable de nada, blah, blah...
 
+Deployed with Vercel @ https://horario-uandes.vercel.app/
 ## Created with
 
 - React
