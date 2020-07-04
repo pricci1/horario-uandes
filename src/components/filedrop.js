@@ -2,12 +2,12 @@ import React, { useCallback } from "react";
 import XLSX from "xlsx";
 import { useDropzone } from "react-dropzone";
 
-function Dropzone({ text }) {
-  const onDrop = useCallback(acceptedFiles => {
-    acceptedFiles.forEach(file => {
+function Dropzone({ text, dataSetter }) {
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => {
       const reader = new FileReader();
       const rABS = !!reader.readAsBinaryString;
-      reader.onload = e => {
+      reader.onload = (e) => {
         /* Parse data */
         const bstr = e.target.result;
         const wb = XLSX.read(bstr, { type: rABS ? "binary" : "array" });
@@ -15,10 +15,35 @@ function Dropzone({ text }) {
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
         /* Convert array of arrays */
-        const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+        const data = XLSX.utils.sheet_to_json(ws, {
+          header: [
+            "n",
+            "escuela",
+            "nrc",
+            "materia",
+            "secc",
+            "titulo",
+            "creditos",
+            "campus",
+            "lunes",
+            "martes",
+            "miercoles",
+            "jueves",
+            "viernes",
+            "sabado",
+            "fecha_inicio",
+            "fecha_fin",
+            "sala",
+            "tipo",
+            "profesor",
+            "cupos",
+          ],
+        });
         /* Update state */
         // this.setState({ data: data, cols: make_cols(ws['!ref']) });
-        console.log(data);
+        window.xlsx = data;
+        dataSetter(data);
+        localStorage.setItem("xlsx_data", JSON.stringify(data));
       };
       if (rABS) reader.readAsBinaryString(file);
       else reader.readAsArrayBuffer(file);
