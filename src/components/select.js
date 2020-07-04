@@ -4,7 +4,7 @@ import Select from "react-select";
 const CourseSelect = ({ courses, selectedCallback, cachedValues }) => {
   const options = courses.map((course) => ({
     value: course["nrc"],
-    label: course["titulo"],
+    label: `${course["nrc"]} - ${course["titulo"]}`,
   }));
   return (
     <Select

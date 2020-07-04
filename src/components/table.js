@@ -175,7 +175,11 @@ const horarioBuilder = (courses) => {
           const hour = event[dayName];
           const hourBlockIds = getHourBlocksIds(hour);
           hourBlockIds.forEach((id) => {
-            const eventObj = { title: event["titulo"], type: event["tipo"] };
+            const eventObj = {
+              title: event["titulo"],
+              type: event["tipo"],
+              nrc: event["nrc"],
+            };
             if (typeof horario[dayName][id] === "object") {
               horario[dayName][id].push(eventObj);
             } else {
@@ -206,6 +210,8 @@ function getEventsTitles(events) {
     const courseBlock = events.map((event) => {
       return (
         <div style={{ backgroundColor: bgColor[event["type"]] }}>
+          {event["nrc"]}
+          <br />
           {event["title"]}
         </div>
       );
