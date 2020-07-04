@@ -2,6 +2,7 @@ import React from "react";
 
 const Exams = ({ courses }) => (
   <div>
+    <h1>Fecha Exámenes</h1>
     <ul>
       {examsReducer(courses).map(({ title, date, time }) => (
         <li key={title}>{`${title} ${date} ${time}`}</li>
