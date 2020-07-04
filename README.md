@@ -6,7 +6,7 @@
 
 - React
 - Hooks
-- React-Select
+- [React-Select](https://react-select.com/)
 - react-dropzone
 - react-github-fork-ribbon
 - xlsxJs

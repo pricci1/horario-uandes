@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-const CourseSelect = ({ courses, selectedCallback }) => {
+const CourseSelect = ({ courses, selectedCallback, cachedValues }) => {
   const options = courses.map((course) => ({
     value: course["nrc"],
     label: course["titulo"],
@@ -14,6 +14,7 @@ const CourseSelect = ({ courses, selectedCallback }) => {
       onChange={(value) => selectedCallback(value || [])}
       className="basic-multi-select"
       classNamePrefix="select"
+      defaultValue={cachedValues}
     />
   );
 };

@@ -12,7 +12,9 @@ export default function App() {
     JSON.parse(localStorage.getItem("xlsx_data")) || []
   );
   const [coursesNrcs, setCoursesNrcs] = useState([]);
-  const [selectedCoursesNrcs, setSelectedCoursesNrcs] = useState([]);
+  const [selectedCoursesNrcs, setSelectedCoursesNrcs] = useState(
+    JSON.parse(localStorage.getItem("selected_nrcs")) || []
+  );
   const [selectedCourses, setSelectedCourses] = useState([]);
 
   useEffect(() => {
@@ -29,8 +31,10 @@ export default function App() {
   }, [xlsxData]);
 
   useEffect(() => {
+    localStorage.setItem("selected_nrcs", JSON.stringify(selectedCoursesNrcs));
     const nrcs =
       (selectedCoursesNrcs && selectedCoursesNrcs.map((c) => c["value"])) || [];
+
     setSelectedCourses(xlsxData.filter(({ nrc }) => nrcs.includes(nrc)));
   }, [selectedCoursesNrcs]);
 
@@ -49,6 +53,9 @@ export default function App() {
       <br />
       <CourseSelect
         courses={coursesNrcs}
+        // TODO: It shouldn't be necesarry to call localStorage here,
+        //       but initial state not working
+        cachedValues={JSON.parse(localStorage.getItem("selected_nrcs"))}
         selectedCallback={setSelectedCoursesNrcs}
       />
       <br />
