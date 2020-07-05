@@ -81,38 +81,42 @@ const horarioBuilder = (courses) => {
     viernes: [],
     sabado: [],
   };
-  const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
 
   courses.forEach((event) => {
-    if (
-      event["tipo"] === "OLIN" ||
-      event["tipo"] === "AYON" ||
-      event["tipo"] === "LBON"
-    ) {
-      for (const day in days) {
-        const dayName = days[day];
-        if (event.hasOwnProperty(dayName)) {
-          const hour = event[dayName];
-          const hourBlockIds = getHourBlocksIds(hour);
-          hourBlockIds.forEach((id) => {
-            const eventObj = {
-              title: event["titulo"],
-              type: event["tipo"],
-              nrc: event["nrc"],
-            };
-            if (typeof horario[dayName][id] === "object") {
-              horario[dayName][id].push(eventObj);
-            } else {
-              horario[dayName][id] = [eventObj];
-            }
-          });
-        }
-      }
+    const eventTypes = ["OLIN", "AYON", "LBON"];
+    if (eventTypes.includes(event["tipo"])) {
+      placeEventInHorario(event, horario);
     }
   });
   return horario;
 };
 
+function placeEventInHorario(event, horario) {
+  const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+
+  for (const day in days) {
+    const dayName = days[day];
+    if (event.hasOwnProperty(dayName)) {
+      const hour = event[dayName];
+      const hourBlockIds = getHourBlocksIds(hour);
+      hourBlockIds.forEach((id) => {
+        const eventObj = {
+          title: event["titulo"],
+          type: event["tipo"],
+          nrc: event["nrc"],
+        };
+        if (typeof horario[dayName][id] === "object") {
+          horario[dayName][id].push(eventObj);
+        } else {
+          horario[dayName][id] = [eventObj];
+        }
+      });
+    }
+  }
+}
+
+// Converts 08:30 - 11:30 to [0, 1, 2]
+// 8 - 8 = 0, 11 - 9 = 2
 function getHourBlocksIds(hourStr) {
   const [start, end] = hourStr.split("-");
   const startInt = parseInt(start.split(":")[0]) - 8;
