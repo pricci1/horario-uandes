@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const horarioEmpty = {
   lunes: [],
@@ -9,14 +9,27 @@ const horarioEmpty = {
   sabado: [],
 };
 
+const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+const hours = [
+  "8:30 - 9:20",
+  "9:30 - 10:20",
+  "10:30 - 11:20",
+  "11:30 - 12:20",
+  "12:30 - 13:20",
+  "13:30 - 14:20",
+  "14:30 - 15:20",
+  "15:30 - 16:20",
+  "16:30 - 17:20",
+  "17:30 - 18:20",
+  "18:30 - 19:20",
+  "19:30 - 20:20",
+];
+
 const Table = ({ courses }) => {
-  //   const [horario, dispatchHorario] = useReducer(horarioBuilder, horarioEmpty);
   const [horario, setHorario] = useState(horarioEmpty);
   useEffect(() => {
-    // dispatchHorario(courses);
     var newHorario = horarioBuilder(courses);
     setHorario(newHorario);
-    console.log(horario);
   }, [JSON.stringify(courses)]);
 
   return (
@@ -34,114 +47,13 @@ const Table = ({ courses }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">8:30 - 9:20</th>
-            <td>{getEventsTitles(horario["lunes"][0])}</td>
-            <td>{getEventsTitles(horario["martes"][0])}</td>
-            <td>{getEventsTitles(horario["miercoles"][0])}</td>
-            <td>{getEventsTitles(horario["jueves"][0])}</td>
-            <td>{getEventsTitles(horario["viernes"][0])}</td>
-            <td>{getEventsTitles(horario["sabado"][0])}</td>
-          </tr>
-          <tr>
-            <th scope="row">9:30 - 10:20</th>
-            <td>{getEventsTitles(horario["lunes"][1])}</td>
-            <td>{getEventsTitles(horario["martes"][1])}</td>
-            <td>{getEventsTitles(horario["miercoles"][1])}</td>
-            <td>{getEventsTitles(horario["jueves"][1])}</td>
-            <td>{getEventsTitles(horario["viernes"][1])}</td>
-            <td>{getEventsTitles(horario["sabado"][1])}</td>
-          </tr>
-          <tr>
-            <th scope="row">10:30 - 11:20</th>
-            <td>{getEventsTitles(horario["lunes"][2])}</td>
-            <td>{getEventsTitles(horario["martes"][2])}</td>
-            <td>{getEventsTitles(horario["miercoles"][2])}</td>
-            <td>{getEventsTitles(horario["jueves"][2])}</td>
-            <td>{getEventsTitles(horario["viernes"][2])}</td>
-            <td>{getEventsTitles(horario["sabado"][2])}</td>
-          </tr>
-          <tr>
-            <th scope="row">11:30 - 12:20</th>
-            <td>{getEventsTitles(horario["lunes"][3])}</td>
-            <td>{getEventsTitles(horario["martes"][3])}</td>
-            <td>{getEventsTitles(horario["miercoles"][3])}</td>
-            <td>{getEventsTitles(horario["jueves"][3])}</td>
-            <td>{getEventsTitles(horario["viernes"][3])}</td>
-            <td>{getEventsTitles(horario["sabado"][3])}</td>
-          </tr>
-          <tr>
-            <th scope="row">12:30 - 13:20</th>
-            <td>{getEventsTitles(horario["lunes"][4])}</td>
-            <td>{getEventsTitles(horario["martes"][4])}</td>
-            <td>{getEventsTitles(horario["miercoles"][4])}</td>
-            <td>{getEventsTitles(horario["jueves"][4])}</td>
-            <td>{getEventsTitles(horario["viernes"][4])}</td>
-            <td>{getEventsTitles(horario["sabado"][4])}</td>
-          </tr>
-          <tr>
-            <th scope="row">13:30 - 14:20</th>
-            <td>{getEventsTitles(horario["lunes"][5])}</td>
-            <td>{getEventsTitles(horario["martes"][5])}</td>
-            <td>{getEventsTitles(horario["miercoles"][5])}</td>
-            <td>{getEventsTitles(horario["jueves"][5])}</td>
-            <td>{getEventsTitles(horario["viernes"][5])}</td>
-            <td>{getEventsTitles(horario["sabado"][5])}</td>
-          </tr>
-          <tr>
-            <th scope="row">14:30 - 15:20</th>
-            <td>{getEventsTitles(horario["lunes"][6])}</td>
-            <td>{getEventsTitles(horario["martes"][6])}</td>
-            <td>{getEventsTitles(horario["miercoles"][6])}</td>
-            <td>{getEventsTitles(horario["jueves"][6])}</td>
-            <td>{getEventsTitles(horario["viernes"][6])}</td>
-            <td>{getEventsTitles(horario["sabado"][6])}</td>
-          </tr>
-          <tr>
-            <th scope="row">15:30 - 16:20</th>
-            <td>{getEventsTitles(horario["lunes"][7])}</td>
-            <td>{getEventsTitles(horario["martes"][7])}</td>
-            <td>{getEventsTitles(horario["miercoles"][7])}</td>
-            <td>{getEventsTitles(horario["jueves"][7])}</td>
-            <td>{getEventsTitles(horario["viernes"][7])}</td>
-            <td>{getEventsTitles(horario["sabado"][7])}</td>
-          </tr>
-          <tr>
-            <th scope="row">16:30 - 17:20</th>
-            <td>{getEventsTitles(horario["lunes"][8])}</td>
-            <td>{getEventsTitles(horario["martes"][8])}</td>
-            <td>{getEventsTitles(horario["miercoles"][8])}</td>
-            <td>{getEventsTitles(horario["jueves"][8])}</td>
-            <td>{getEventsTitles(horario["viernes"][8])}</td>
-            <td>{getEventsTitles(horario["sabado"][8])}</td>
-          </tr>
-          <tr>
-            <th scope="row">17:30 - 18:20</th>
-            <td>{getEventsTitles(horario["lunes"][9])}</td>
-            <td>{getEventsTitles(horario["martes"][9])}</td>
-            <td>{getEventsTitles(horario["miercoles"][9])}</td>
-            <td>{getEventsTitles(horario["jueves"][9])}</td>
-            <td>{getEventsTitles(horario["viernes"][9])}</td>
-            <td>{getEventsTitles(horario["sabado"][9])}</td>
-          </tr>
-          <tr>
-            <th scope="row">18:30 - 19:20</th>
-            <td>{getEventsTitles(horario["lunes"][10])}</td>
-            <td>{getEventsTitles(horario["martes"][10])}</td>
-            <td>{getEventsTitles(horario["miercoles"][10])}</td>
-            <td>{getEventsTitles(horario["jueves"][10])}</td>
-            <td>{getEventsTitles(horario["viernes"][10])}</td>
-            <td>{getEventsTitles(horario["sabado"][10])}</td>
-          </tr>
-          <tr>
-            <th scope="row">19:30 - 20:20</th>
-            <td>{getEventsTitles(horario["lunes"][11])}</td>
-            <td>{getEventsTitles(horario["martes"][11])}</td>
-            <td>{getEventsTitles(horario["miercoles"][11])}</td>
-            <td>{getEventsTitles(horario["jueves"][11])}</td>
-            <td>{getEventsTitles(horario["viernes"][11])}</td>
-            <td>{getEventsTitles(horario["sabado"][11])}</td>
-          </tr>
+          {hours.map((hour) => (
+            <TableRow
+              horario={horario}
+              rowHeader={hour}
+              hourIndex={hours.indexOf(hour)}
+            />
+          ))}
         </tbody>
       </table>
     )) ||
@@ -149,9 +61,18 @@ const Table = ({ courses }) => {
   );
 };
 
+const TableRow = ({ horario, rowHeader, hourIndex }) => {
+  return (
+    <tr>
+      <th scope="row">{rowHeader}</th>
+      {days.map((day) => (
+        <td>{getEventsTitles(horario[day][hourIndex])}</td>
+      ))}
+    </tr>
+  );
+};
+
 const horarioBuilder = (courses) => {
-  //   horario["lunes"][0] = [Date.now()];
-  //   return horario;
   const horario = {
     lunes: [],
     martes: [],
@@ -163,7 +84,6 @@ const horarioBuilder = (courses) => {
   const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
 
   courses.forEach((event) => {
-    console.log("aca1");
     if (
       event["tipo"] === "OLIN" ||
       event["tipo"] === "AYON" ||
