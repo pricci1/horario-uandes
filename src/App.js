@@ -48,6 +48,9 @@ export default function App() {
         Fork me on GitHub
       </GitHubForkRibbon>
       <h1>Horario Ingeniería</h1>
+      <a href="https://saf.uandes.cl/ing/infogroup/download_content_file/376">
+        Descarga el hoario actualizado de SAF
+      </a>
       {xlsxData.length > 2 && <h3>{xlsxData[1]["n"]}</h3>}
       <Dropzone
         text="Arrastra un XLSX o haz click aquí..."
