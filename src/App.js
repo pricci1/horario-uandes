@@ -49,7 +49,10 @@ export default function App() {
       </GitHubForkRibbon>
       <h1>Horario Ingeniería</h1>
       {xlsxData.length > 2 && <h3>{xlsxData[1]["n"]}</h3>}
-      <Dropzone text="Arrastrea un XLSX..." dataSetter={setXlsxData} />
+      <Dropzone
+        text="Arrastra un XLSX o haz click aquí..."
+        dataSetter={setXlsxData}
+      />
       <br />
       <CourseSelect
         courses={coursesNrcs}
