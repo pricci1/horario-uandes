@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "purecss";
 
 const horarioEmpty = {
   lunes: [],
@@ -34,7 +35,11 @@ const Table = ({ courses }) => {
 
   return (
     (horario.lunes && (
-      <table border="1" style={{ tableLayout: "fixed", border: "1" }}>
+      <table
+        className="pure-table pure-table-bordered "
+        // border="1"
+        // style={{ tableLayout: "fixed", border: "1" }}
+      >
         <thead>
           <tr>
             <td></td>
@@ -64,7 +69,7 @@ const Table = ({ courses }) => {
 const TableRow = ({ horario, rowHeader, hourIndex }) => {
   return (
     <tr>
-      <th scope="row">{rowHeader}</th>
+      <td scope="row">{rowHeader}</td>
       {days.map((day) => (
         <td>{getEventsTitles(horario[day][hourIndex])}</td>
       ))}
@@ -129,14 +134,23 @@ function getHourBlocksIds(hourStr) {
 }
 
 function getEventsTitles(events) {
-  const bgColor = { OLIN: "green", AYON: "yellow", LBON: "cyan" };
+  const bgColor = {
+    OLIN: "green",
+    AYON: "yellow",
+    LBON: "cyan",
+    TUTR: "orange",
+  };
   if (typeof events === "object") {
     const courseBlock = events.map((event) => {
       return (
-        <div style={{ backgroundColor: bgColor[event["type"]] }}>
+        <div
+          style={{
+            backgroundColor: bgColor[event["type"]],
+          }}
+        >
           {event["nrc"]}
           <br />
-          {event["title"]}
+          {event["title"].substr(0, 18)}
         </div>
       );
     });
