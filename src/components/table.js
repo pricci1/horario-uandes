@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Tooltip } from "react-tippy";
 import "purecss";
+import "react-tippy/dist/tippy.css";
 
 const horarioEmpty = {
   lunes: [],
@@ -109,6 +111,7 @@ function placeEventInHorario(event, horario) {
           title: event["titulo"],
           type: event["tipo"],
           nrc: event["nrc"],
+          teacher: event["profesor"],
         };
         if (typeof horario[dayName][id] === "object") {
           horario[dayName][id].push(eventObj);
@@ -143,15 +146,30 @@ function getEventsTitles(events) {
   if (typeof events === "object") {
     const courseBlock = events.map((event) => {
       return (
-        <div
-          style={{
-            backgroundColor: bgColor[event["type"]],
-          }}
+        <Tooltip
+          interactive
+          html={
+            <div>
+              <span>{event["nrc"]}</span>
+              <br />
+              <span>{event["title"]}</span>
+              <br />
+              <span>{event["type"]}</span>
+              <br />
+              <span>{event["teacher"]}</span>
+            </div>
+          }
         >
-          {event["nrc"]}
-          <br />
-          {event["title"].substr(0, 18)}
-        </div>
+          <div
+            style={{
+              backgroundColor: bgColor[event["type"]],
+            }}
+          >
+            {event["nrc"]}
+            <br />
+            {event["title"].substr(0, 18)}
+          </div>
+        </Tooltip>
       );
     });
     if (courseBlock.length > 1) {
