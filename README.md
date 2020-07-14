@@ -12,6 +12,8 @@ Deployed with Vercel @ https://horario-uandes.vercel.app/
 - react-dropzone
 - react-github-fork-ribbon
 - xlsxJs
+- [Pure css](https://purecss.io)
+- [React Tippy](https://github.com/tvkhoa/react-tippy)
 
 ## Usage
 
