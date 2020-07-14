@@ -5,7 +5,7 @@ import "./styles.css";
 import Dropzone from "./components/filedrop";
 import { Table } from "./components/table";
 import CourseSelect from "./components/select";
-import Exams from "./components/exams";
+import Tests from "./components/tests";
 
 export default function App() {
   const [xlsxData, setXlsxData] = useState(
@@ -70,7 +70,17 @@ export default function App() {
       <br />
       <Table courses={selectedCourses} />
       <br />
-      <Exams courses={selectedCourses} />
+      <Tests
+        title="Fecha Exámenes"
+        testTypes={["EXON"]}
+        courses={selectedCourses}
+      />
+      <br />
+      <Tests
+        title="Fecha Pruebas"
+        testTypes={[1, 2, 3, 4, 5, 6, 7, 8, 9].map((nmbr) => `PRON ${nmbr}`)}
+        courses={selectedCourses}
+      />
     </div>
   );
 }
