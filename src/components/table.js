@@ -12,7 +12,7 @@ const horarioEmpty = {
   sabado: [],
 };
 
-const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+const days = ["lunes", "martes", "miercoles", "jueves", "viernes"];
 const hours = [
   "8:30 - 9:20",
   "9:30 - 10:20",
@@ -40,7 +40,7 @@ const Table = ({ courses }) => {
       <table
         className="pure-table pure-table-bordered "
         // border="1"
-        // style={{ tableLayout: "fixed", border: "1" }}
+        style={{ marginLeft: "auto", marginRight: "auto" }}
       >
         <thead>
           <tr>
@@ -50,7 +50,6 @@ const Table = ({ courses }) => {
             <th>Miércoles</th>
             <th>Jueves</th>
             <th>Viernes</th>
-            <th>Sábado</th>
           </tr>
         </thead>
         <tbody>
@@ -99,7 +98,7 @@ const horarioBuilder = (courses) => {
 };
 
 function placeEventInHorario(event, horario) {
-  const days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+  const days = ["lunes", "martes", "miercoles", "jueves", "viernes"];
 
   for (const day in days) {
     const dayName = days[day];
