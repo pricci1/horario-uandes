@@ -1,17 +1,35 @@
 import React from "react";
 
-const Tests = ({ courses, testTypes, title }) => (
-  <div>
-    <h1>{title}</h1>
-    <ul>
-      {testsReducer(courses, testTypes).map(
-        ({ title, formattedDate, time }) => (
-          <li key={title}>{`${title} ${formattedDate} ${time}`}</li>
-        )
-      )}
-    </ul>
-  </div>
-);
+const Tests = ({ courses, testTypes, title }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <table
+        class="pure-table pure-table-horizontal"
+        style={{ marginLeft: "auto", marginRight: "auto" }}
+      >
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Día</th>
+            <th>Horario</th>
+            <th>Ramo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {testsReducer(courses, testTypes).map(({ title, time, date }) => (
+            <tr key={title}>
+              <td>{monthNames[date.getUTCMonth()]}</td>
+              <td>{date.getUTCDate()}</td>
+              <td>{time}</td>
+              <td>{title}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 const testsReducer = (courses, testTypes) => {
   const tests = [];
@@ -27,8 +45,7 @@ const testsReducer = (courses, testTypes) => {
         }
       });
       const date = ExcelDateToJSDate(event["inicio"]);
-      const formattedDate = `${date.getUTCDate()}/${date.getUTCMonth() + 1}`;
-      tests.push({ title: event["titulo"], date, formattedDate, time });
+      tests.push({ title: event["titulo"], date, time });
     }
   });
   const orderedTests = orderTestsByDate(tests);
@@ -43,5 +60,20 @@ function ExcelDateToJSDate(date) {
 function orderTestsByDate(tests) {
   return tests.sort((a, b) => a.date.getTime() - b.date.getTime());
 }
+
+const monthNames = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
 
 export default Tests;
