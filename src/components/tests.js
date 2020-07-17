@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Tests = ({ courses, testTypes, title }) => {
+  const [tests, setTests] = useState([]);
+  useEffect(() => {
+    setTests(testsReducer(courses, testTypes));
+  }, [JSON.stringify(courses)]);
   return (
     <div>
       <h1>{title}</h1>
@@ -17,8 +21,8 @@ const Tests = ({ courses, testTypes, title }) => {
           </tr>
         </thead>
         <tbody>
-          {testsReducer(courses, testTypes).map(({ title, time, date }) => (
-            <tr key={title}>
+          {tests.map(({ title, time, date }) => (
+            <tr key={`${title}-${date.toISOString()}`}>
               <td>{monthNames[date.getUTCMonth()]}</td>
               <td>{date.getUTCDate()}</td>
               <td>{time}</td>
@@ -49,7 +53,7 @@ const testsReducer = (courses, testTypes) => {
     }
   });
   const orderedTests = orderTestsByDate(tests);
-  return orderedTests;
+  return [...new Set(orderedTests)];
 };
 
 // https://stackoverflow.com/a/22352911
