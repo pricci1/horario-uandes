@@ -50,7 +50,7 @@ export default function App() {
       <h1>Horario Ingeniería</h1>
       <a
         className="pure-button"
-        href="https://saf.uandes.cl/ing/infogroup/download_content_file/376"
+        href="https://saf.uandes.cl/ing/infogroup/download_content_file/397"
       >
         Descarga el hoario actualizado de SAF
       </a>
