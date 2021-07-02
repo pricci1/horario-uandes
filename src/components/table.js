@@ -128,14 +128,16 @@ function placeEventInHorario(event, horario) {
 // Converts 08:30 - 11:30 to [0, 1, 2]
 // 8 - 8 = 0, 11 - 9 = 2
 function getHourBlocksIds(hourStr) {
-  const [start, end] = hourStr.split("-");
-  const startInt = parseInt(start.split(":")[0]) - 8;
-  const endInt = parseInt(end.split(":")[0]) - 9;
-  const spawnIds = [];
-  for (let id = startInt; id <= endInt; id++) {
-    spawnIds.push(id);
-  }
-  return spawnIds;
+  try {
+    const [start, end] = hourStr.split("-");
+    const startInt = parseInt(start.split(":")[0]) - 8;
+    const endInt = parseInt(end.split(":")[0]) - 9;
+    const spawnIds = [];
+    for (let id = startInt; id <= endInt; id++) {
+      spawnIds.push(id);
+    }
+    return spawnIds;
+  } catch {}
 }
 
 function getEventsTitles(events) {
