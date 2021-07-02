@@ -25,7 +25,6 @@ function Dropzone({ text, dataSetter }) {
             "curso",
             "secc.",
             "titulo",
-            "credito",
             "lunes",
             "martes",
             "miercoles",
@@ -33,7 +32,9 @@ function Dropzone({ text, dataSetter }) {
             "viernes",
             "inicio",
             "fin",
+            "sala",
             "tipo",
+            "rut profesor",
             "profesor",
           ],
         });

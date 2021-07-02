@@ -92,7 +92,7 @@ const horarioBuilder = (courses) => {
   };
 
   courses.forEach((event) => {
-    const eventTypes = ["OLIN", "AYON", "LBON"];
+    const eventTypes = ["CLAS", "AYUD", "LABT"];
     if (eventTypes.includes(event["tipo"])) {
       placeEventInHorario(event, horario);
     }
@@ -140,9 +140,9 @@ function getHourBlocksIds(hourStr) {
 
 function getEventsTitles(events) {
   const bgColor = {
-    OLIN: "green",
-    AYON: "yellow",
-    LBON: "cyan",
+    CLAS: "green",
+    AYUD: "yellow",
+    LABT: "cyan",
     TUTR: "orange",
   };
   if (typeof events === "object") {

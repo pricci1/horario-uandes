@@ -50,7 +50,7 @@ export default function App() {
       <h1>Horario Ingeniería</h1>
       <a
         className="pure-button"
-        href="https://saf.uandes.cl/ing/infogroup/download_content_file/397"
+        href="https://saf.uandes.cl/ing/infogroup/download_content_file/423"
       >
         Descarga el hoario actualizado de SAF
       </a>
@@ -72,13 +72,13 @@ export default function App() {
       <br />
       <Tests
         title="Fecha Exámenes"
-        testTypes={["EXON"]}
+        testTypes={["EXAM"]}
         courses={selectedCourses}
       />
       <br />
       <Tests
         title="Fecha Pruebas"
-        testTypes={[1, 2, 3, 4, 5, 6, 7, 8, 9].map((nmbr) => `PRON ${nmbr}`)}
+        testTypes={[1, 2, 3, 4, 5, 6, 7, 8, 9].map((nmbr) => `PRBA ${nmbr}`)}
         courses={selectedCourses}
       />
       <br />
