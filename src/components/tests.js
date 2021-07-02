@@ -58,7 +58,11 @@ const testsReducer = (courses, testTypes) => {
 
 // https://stackoverflow.com/a/22352911
 function ExcelDateToJSDate(date) {
-  return new Date(Math.round((date - 25569) * 86400 * 1000));
+  try {
+    const dateObj = new Date(Math.round((date - 25569) * 86400 * 1000));
+  } catch {}
+
+  return new Date();
 }
 
 function orderTestsByDate(tests) {
