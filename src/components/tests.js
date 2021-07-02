@@ -9,7 +9,7 @@ const Tests = ({ courses, testTypes, title }) => {
     <div>
       <h1>{title}</h1>
       <table
-        class="pure-table pure-table-horizontal"
+        className="pure-table pure-table-horizontal"
         style={{ marginLeft: "auto", marginRight: "auto" }}
       >
         <thead>

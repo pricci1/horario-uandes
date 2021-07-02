@@ -55,6 +55,7 @@ const Table = ({ courses }) => {
         <tbody>
           {hours.map((hour) => (
             <TableRow
+              key={`${hour}`}
               horario={horario}
               rowHeader={hour}
               hourIndex={hours.indexOf(hour)}
@@ -72,7 +73,9 @@ const TableRow = ({ horario, rowHeader, hourIndex }) => {
     <tr>
       <td scope="row">{rowHeader}</td>
       {days.map((day) => (
-        <td>{getEventsTitles(horario[day][hourIndex])}</td>
+        <td key={`${day}-${hourIndex}`}>
+          {getEventsTitles(horario[day][hourIndex])}
+        </td>
       ))}
     </tr>
   );
