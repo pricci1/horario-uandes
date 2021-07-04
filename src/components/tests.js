@@ -60,6 +60,7 @@ const testsReducer = (courses, testTypes) => {
 function ExcelDateToJSDate(date) {
   try {
     const dateObj = new Date(Math.round((date - 25569) * 86400 * 1000));
+    return dateObj;
   } catch {}
 
   return new Date();
