@@ -16,9 +16,18 @@
     <div>
       <ul>
         <li>01/07/21: Funcionando con nuevo horario 2021-02</li>
-        <li>En caso de errores, limpiar caché del navegador</li>
+        <li>
+          En caso de errores, resetear la página.
+          <button onclick="clearLocalStorage()">Click aquí</button>
+        </li>
       </ul>
     </div>
     <div id="root"></div>
+    <script>
+      function clearLocalStorage() {
+        localStorage.clear();
+        location.reload();
+      }
+    </script>
   </body>
 </html>
